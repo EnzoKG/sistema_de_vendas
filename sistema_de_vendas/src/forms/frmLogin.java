@@ -130,7 +130,15 @@ public class frmLogin extends javax.swing.JFrame {
         Dados dados = new Dados();
         if(!dados.validaUsuarios(txtUsuário.getText(), new String(txtSenha.getPassword()))){
             JOptionPane.showMessageDialog(rootPane, "USUÁRIO E/OU SENHA INCORRETA");
+            txtUsuário.setText("");
+            txtSenha.setText("");
+            txtUsuário.requestFocusInWindow();
+            return;
         }
+        frmMenu menu = new frmMenu();
+        this.setVisible(false);
+        menu.setVisible(true);
+        menu.setExtendedState(MAXIMIZED_BOTH);
     }//GEN-LAST:event_cmdLoginActionPerformed
 
     /**
