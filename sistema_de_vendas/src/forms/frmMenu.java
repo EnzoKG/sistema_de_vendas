@@ -26,8 +26,71 @@ public class frmMenu extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jMenuBar1 = new javax.swing.JMenuBar();
+        mnArquivos = new javax.swing.JMenu();
+        mnArquivosClientes = new javax.swing.JMenuItem();
+        mnArquivosProdutos = new javax.swing.JMenuItem();
+        mnArquivosUsuários = new javax.swing.JMenuItem();
+        jSeparator1 = new javax.swing.JPopupMenu.Separator();
+        mnArquivosAltSenha = new javax.swing.JMenuItem();
+        mnArquivosAltUsuário = new javax.swing.JMenuItem();
+        jSeparator2 = new javax.swing.JPopupMenu.Separator();
+        mnArquivosSair = new javax.swing.JMenuItem();
+        mnMovimentos = new javax.swing.JMenu();
+        mnMovimentosVendas = new javax.swing.JMenuItem();
+        mnMovimentosRelVendas = new javax.swing.JMenuItem();
+        mnAjuda = new javax.swing.JMenu();
+        mnAjudaSobre = new javax.swing.JMenuItem();
+        mnAjudaAjude = new javax.swing.JMenuItem();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Sistema de pedidos");
+
+        mnArquivos.setText("Arquivos");
+
+        mnArquivosClientes.setText("Clientes");
+        mnArquivos.add(mnArquivosClientes);
+
+        mnArquivosProdutos.setText("Produtos");
+        mnArquivos.add(mnArquivosProdutos);
+
+        mnArquivosUsuários.setText("Usuários");
+        mnArquivos.add(mnArquivosUsuários);
+        mnArquivos.add(jSeparator1);
+
+        mnArquivosAltSenha.setText("Alterar senha");
+        mnArquivos.add(mnArquivosAltSenha);
+
+        mnArquivosAltUsuário.setText("Alterar usuário");
+        mnArquivos.add(mnArquivosAltUsuário);
+        mnArquivos.add(jSeparator2);
+
+        mnArquivosSair.setText("Sair");
+        mnArquivos.add(mnArquivosSair);
+
+        jMenuBar1.add(mnArquivos);
+
+        mnMovimentos.setText("Movimentos");
+
+        mnMovimentosVendas.setText("Vendas");
+        mnMovimentos.add(mnMovimentosVendas);
+
+        mnMovimentosRelVendas.setText("Relatórios vendas");
+        mnMovimentos.add(mnMovimentosRelVendas);
+
+        jMenuBar1.add(mnMovimentos);
+
+        mnAjuda.setText("Ajuda");
+
+        mnAjudaSobre.setText("Sobre");
+        mnAjuda.add(mnAjudaSobre);
+
+        mnAjudaAjude.setText("Ajude-me");
+        mnAjuda.add(mnAjudaAjude);
+
+        jMenuBar1.add(mnAjuda);
+
+        setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -37,7 +100,7 @@ public class frmMenu extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGap(0, 277, Short.MAX_VALUE)
         );
 
         pack();
@@ -79,5 +142,21 @@ public class frmMenu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JPopupMenu.Separator jSeparator1;
+    private javax.swing.JPopupMenu.Separator jSeparator2;
+    private javax.swing.JMenu mnAjuda;
+    private javax.swing.JMenuItem mnAjudaAjude;
+    private javax.swing.JMenuItem mnAjudaSobre;
+    private javax.swing.JMenu mnArquivos;
+    private javax.swing.JMenuItem mnArquivosAltSenha;
+    private javax.swing.JMenuItem mnArquivosAltUsuário;
+    private javax.swing.JMenuItem mnArquivosClientes;
+    private javax.swing.JMenuItem mnArquivosProdutos;
+    private javax.swing.JMenuItem mnArquivosSair;
+    private javax.swing.JMenuItem mnArquivosUsuários;
+    private javax.swing.JMenu mnMovimentos;
+    private javax.swing.JMenuItem mnMovimentosRelVendas;
+    private javax.swing.JMenuItem mnMovimentosVendas;
     // End of variables declaration//GEN-END:variables
 }
