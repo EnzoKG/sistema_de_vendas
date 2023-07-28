@@ -26,6 +26,7 @@ public class frmMenu extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        deskPanel = new javax.swing.JDesktopPane();
         jMenuBar1 = new javax.swing.JMenuBar();
         mnArquivos = new javax.swing.JMenu();
         mnArquivosClientes = new javax.swing.JMenuItem();
@@ -46,6 +47,17 @@ public class frmMenu extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Sistema de pedidos");
 
+        javax.swing.GroupLayout deskPanelLayout = new javax.swing.GroupLayout(deskPanel);
+        deskPanel.setLayout(deskPanelLayout);
+        deskPanelLayout.setHorizontalGroup(
+            deskPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 914, Short.MAX_VALUE)
+        );
+        deskPanelLayout.setVerticalGroup(
+            deskPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 407, Short.MAX_VALUE)
+        );
+
         mnArquivos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/inbox.png"))); // NOI18N
         mnArquivos.setText("Arquivos");
 
@@ -64,6 +76,11 @@ public class frmMenu extends javax.swing.JFrame {
 
         mnArquivosUsuários.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/group.png"))); // NOI18N
         mnArquivosUsuários.setText("Usuários");
+        mnArquivosUsuários.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnArquivosUsuáriosActionPerformed(evt);
+            }
+        });
         mnArquivos.add(mnArquivosUsuários);
         mnArquivos.add(jSeparator1);
 
@@ -114,11 +131,11 @@ public class frmMenu extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 914, Short.MAX_VALUE)
+            .addComponent(deskPanel)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 407, Short.MAX_VALUE)
+            .addComponent(deskPanel)
         );
 
         pack();
@@ -127,6 +144,13 @@ public class frmMenu extends javax.swing.JFrame {
     private void mnArquivosClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnArquivosClientesActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_mnArquivosClientesActionPerformed
+
+    private void mnArquivosUsuáriosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnArquivosUsuáriosActionPerformed
+        // TODO add your handling code here:
+        frmUsuarios fusuario = new frmUsuarios();
+        deskPanel.add(fusuario);
+        fusuario.show();
+    }//GEN-LAST:event_mnArquivosUsuáriosActionPerformed
 
     /**
      * @param args the command line arguments
@@ -164,6 +188,7 @@ public class frmMenu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JDesktopPane deskPanel;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPopupMenu.Separator jSeparator1;
     private javax.swing.JPopupMenu.Separator jSeparator2;
