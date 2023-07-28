@@ -46,45 +46,63 @@ public class frmMenu extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Sistema de pedidos");
 
+        mnArquivos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/inbox.png"))); // NOI18N
         mnArquivos.setText("Arquivos");
 
+        mnArquivosClientes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/target.png"))); // NOI18N
         mnArquivosClientes.setText("Clientes");
+        mnArquivosClientes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnArquivosClientesActionPerformed(evt);
+            }
+        });
         mnArquivos.add(mnArquivosClientes);
 
+        mnArquivosProdutos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/product.png"))); // NOI18N
         mnArquivosProdutos.setText("Produtos");
         mnArquivos.add(mnArquivosProdutos);
 
+        mnArquivosUsuários.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/group.png"))); // NOI18N
         mnArquivosUsuários.setText("Usuários");
         mnArquivos.add(mnArquivosUsuários);
         mnArquivos.add(jSeparator1);
 
+        mnArquivosAltSenha.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/key.png"))); // NOI18N
         mnArquivosAltSenha.setText("Alterar senha");
         mnArquivos.add(mnArquivosAltSenha);
 
+        mnArquivosAltUsuário.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/user.png"))); // NOI18N
         mnArquivosAltUsuário.setText("Alterar usuário");
         mnArquivos.add(mnArquivosAltUsuário);
         mnArquivos.add(jSeparator2);
 
+        mnArquivosSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/exit.png"))); // NOI18N
         mnArquivosSair.setText("Sair");
         mnArquivos.add(mnArquivosSair);
 
         jMenuBar1.add(mnArquivos);
 
+        mnMovimentos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/payment-method.png"))); // NOI18N
         mnMovimentos.setText("Movimentos");
 
+        mnMovimentosVendas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/cart.png"))); // NOI18N
         mnMovimentosVendas.setText("Vendas");
         mnMovimentos.add(mnMovimentosVendas);
 
+        mnMovimentosRelVendas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/report.png"))); // NOI18N
         mnMovimentosRelVendas.setText("Relatórios vendas");
         mnMovimentos.add(mnMovimentosRelVendas);
 
         jMenuBar1.add(mnMovimentos);
 
+        mnAjuda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/question.png"))); // NOI18N
         mnAjuda.setText("Ajuda");
 
+        mnAjudaSobre.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/info.png"))); // NOI18N
         mnAjudaSobre.setText("Sobre");
         mnAjuda.add(mnAjudaSobre);
 
+        mnAjudaAjude.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/question.png"))); // NOI18N
         mnAjudaAjude.setText("Ajude-me");
         mnAjuda.add(mnAjudaAjude);
 
@@ -96,15 +114,19 @@ public class frmMenu extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGap(0, 914, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 277, Short.MAX_VALUE)
+            .addGap(0, 407, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void mnArquivosClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnArquivosClientesActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_mnArquivosClientesActionPerformed
 
     /**
      * @param args the command line arguments
