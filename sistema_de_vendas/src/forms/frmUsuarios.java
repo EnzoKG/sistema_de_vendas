@@ -4,12 +4,22 @@
  */
 package forms;
 
+import classes.Dados;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author enzog
  */
 public class frmUsuarios extends javax.swing.JInternalFrame {
 
+    private Dados clsdados;
+    private int usuarioAtual = 0;
+    private boolean cmdAdicionar = false;
+    
+    public void setDados(Dados clsDados) {
+        this.clsdados = clsDados;
+    }
     /**
      * Creates new form frmUsuarios
      */
@@ -42,14 +52,32 @@ public class frmUsuarios extends javax.swing.JInternalFrame {
         cmdVoltar = new javax.swing.JButton();
         cmdAvancar = new javax.swing.JButton();
         cmdFim = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        cmdAdd = new javax.swing.JButton();
+        cmdEditar = new javax.swing.JButton();
+        cmdSalvar = new javax.swing.JButton();
+        cmdBuscar = new javax.swing.JButton();
+        cmdDeletar = new javax.swing.JButton();
 
         setClosable(true);
         setIconifiable(true);
         setTitle("Cadastro de usuários");
+        addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
+            public void internalFrameActivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameClosed(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameClosing(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameDeactivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameDeiconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameIconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameOpened(javax.swing.event.InternalFrameEvent evt) {
+                formInternalFrameOpened(evt);
+            }
+        });
 
         jLabel1.setText("Código Usuário:");
 
@@ -61,15 +89,45 @@ public class frmUsuarios extends javax.swing.JInternalFrame {
 
         jLabel5.setText("Confirme a senha:");
 
+        txtCodUsuario.setEnabled(false);
         txtCodUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtCodUsuarioActionPerformed(evt);
             }
         });
 
+        txtNome.setEnabled(false);
+        txtNome.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNomeActionPerformed(evt);
+            }
+        });
+
+        txtSobrenome.setEnabled(false);
+        txtSobrenome.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtSobrenomeActionPerformed(evt);
+            }
+        });
+
+        txtSenha.setEnabled(false);
+        txtSenha.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtSenhaActionPerformed(evt);
+            }
+        });
+
+        txtConfirmeSenha.setEnabled(false);
+        txtConfirmeSenha.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtConfirmeSenhaActionPerformed(evt);
+            }
+        });
+
         jLabel6.setText("Perfil:");
 
         boxPerfil.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecionar", "Administrador", "Funcionário" }));
+        boxPerfil.setEnabled(false);
         boxPerfil.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 boxPerfilActionPerformed(evt);
@@ -77,6 +135,7 @@ public class frmUsuarios extends javax.swing.JInternalFrame {
         });
 
         cmdInicio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/left-arrow.png"))); // NOI18N
+        cmdInicio.setToolTipText("Primeiro Cadastro");
         cmdInicio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmdInicioActionPerformed(evt);
@@ -84,6 +143,7 @@ public class frmUsuarios extends javax.swing.JInternalFrame {
         });
 
         cmdVoltar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/back.png"))); // NOI18N
+        cmdVoltar.setToolTipText("Cadastro Anterior");
         cmdVoltar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmdVoltarActionPerformed(evt);
@@ -91,16 +151,47 @@ public class frmUsuarios extends javax.swing.JInternalFrame {
         });
 
         cmdAvancar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/next.png"))); // NOI18N
+        cmdAvancar.setToolTipText("Próximo Cadastro");
 
         cmdFim.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/right.png"))); // NOI18N
+        cmdFim.setToolTipText("Último Cadastro");
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/add.png"))); // NOI18N
+        cmdAdd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/add.png"))); // NOI18N
+        cmdAdd.setToolTipText("Novo Cadastro");
+        cmdAdd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmdAddActionPerformed(evt);
+            }
+        });
 
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/pen.png"))); // NOI18N
+        cmdEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/pen.png"))); // NOI18N
+        cmdEditar.setToolTipText("Editar Cadastro");
+        cmdEditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmdEditarActionPerformed(evt);
+            }
+        });
 
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/floppy-disk.png"))); // NOI18N
+        cmdSalvar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/floppy-disk.png"))); // NOI18N
+        cmdSalvar.setToolTipText("Salvar Cadastro");
+        cmdSalvar.setEnabled(false);
+        cmdSalvar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmdSalvarActionPerformed(evt);
+            }
+        });
 
-        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/magnifying-glass.png"))); // NOI18N
+        cmdBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/magnifying-glass.png"))); // NOI18N
+        cmdBuscar.setToolTipText("Buscar Cadastro");
+
+        cmdDeletar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/delete.png"))); // NOI18N
+        cmdDeletar.setToolTipText("Deletar Cadastro");
+        cmdDeletar.setEnabled(false);
+        cmdDeletar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmdDeletarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -128,13 +219,15 @@ public class frmUsuarios extends javax.swing.JInternalFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(cmdFim)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(cmdAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(cmdEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(cmdSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(cmdDeletar, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(cmdBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addComponent(txtConfirmeSenha, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
                         .addComponent(txtSenha, javax.swing.GroupLayout.Alignment.LEADING))
@@ -182,11 +275,13 @@ public class frmUsuarios extends javax.swing.JInternalFrame {
                                     .addComponent(cmdAvancar, javax.swing.GroupLayout.Alignment.TRAILING)))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(12, 12, 12)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(cmdBuscar)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(cmdDeletar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(cmdAdd, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(cmdEditar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(cmdSalvar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
                     .addComponent(cmdFim, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addContainerGap())
         );
@@ -210,17 +305,187 @@ public class frmUsuarios extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_cmdInicioActionPerformed
 
+    private void cmdAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdAddActionPerformed
+        // TODO add your handling code here:
+        cmdInicio.setEnabled(false);
+        cmdVoltar.setEnabled(false);
+        cmdAvancar.setEnabled(false);
+        cmdFim.setEnabled(false);
+        cmdAdd.setEnabled(false);
+        cmdEditar.setEnabled(false);
+        cmdSalvar.setEnabled(true);
+        cmdBuscar.setEnabled(false);
+        cmdDeletar.setEnabled(true);
+        
+        boxPerfil.setEnabled(true);
+        txtCodUsuario.setEnabled(true);
+        txtNome.setEnabled(true);
+        txtSobrenome.setEnabled(true);
+        txtSenha.setEnabled(true);
+        txtConfirmeSenha.setEnabled(true);
+        
+        boxPerfil.setSelectedIndex(0);
+        txtCodUsuario.setText("");
+        txtNome.setText("");
+        txtSobrenome.setText("");
+        txtSenha.setText("");
+        txtConfirmeSenha.setText("");
+        
+        cmdAdicionar = true;
+        
+        txtCodUsuario.requestFocusInWindow();
+    }//GEN-LAST:event_cmdAddActionPerformed
+
+    private void cmdSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdSalvarActionPerformed
+        if(txtCodUsuario.getText().equals("")) {
+            JOptionPane.showMessageDialog(rootPane, "O CÓDIGO do usuário não pode ser vazio!");
+            txtCodUsuario.requestFocusInWindow();
+            return;
+        }
+        
+        if(boxPerfil.getSelectedIndex() == 0) {
+            JOptionPane.showMessageDialog(rootPane, "Selecione o PERFIL do Usuário!");
+            boxPerfil.requestFocusInWindow();
+            return;
+        }
+        
+        if(txtNome.getText().equals("")) {
+            JOptionPane.showMessageDialog(rootPane, "Escreva o NOME do usuário!");
+            txtNome.requestFocusInWindow();
+            return;
+        }
+        
+        if(txtSobrenome.getText().equals("")) {
+            JOptionPane.showMessageDialog(rootPane, "Digite o SOBRENOME do usuário!");
+            txtSobrenome.requestFocusInWindow();
+            return;
+        }
+        
+        if(new String(txtSenha.getPassword()).equals("")) {
+            JOptionPane.showMessageDialog(rootPane, "A SENHA do usuário não pode ser vazia!");
+            txtSenha.requestFocusInWindow();
+            return;
+        }
+        
+        if(new String(txtConfirmeSenha.getPassword()).equals("")) {
+            JOptionPane.showMessageDialog(rootPane, "Confirme a SENHA do usuário!");
+            txtConfirmeSenha.requestFocusInWindow();
+            return;
+        }
+        
+        if(!new String(txtSenha.getPassword()).equals(new String(txtConfirmeSenha.getPassword()))) {
+            JOptionPane.showMessageDialog(rootPane, "As SENHAS não coincidem!");
+            txtConfirmeSenha.requestFocusInWindow();
+            return;
+        }
+        
+        int posLinha = clsdados.linhaUsuario(txtCodUsuario.getText());
+        if(posLinha != -1) {
+            JOptionPane.showMessageDialog(rootPane, "Esse CADASTRO de usuário já existe!");
+            txtCodUsuario.requestFocusInWindow();
+            return;
+        }
+        
+        // TODO add your handling code here:
+        cmdInicio.setEnabled(true);
+        cmdVoltar.setEnabled(true);
+        cmdAvancar.setEnabled(true);
+        cmdFim.setEnabled(true);
+        cmdAdd.setEnabled(true);
+        cmdEditar.setEnabled(true);
+        cmdSalvar.setEnabled(false);
+        cmdBuscar.setEnabled(true);
+        cmdDeletar.setEnabled(false);
+        
+        boxPerfil.setEnabled(false);
+        txtCodUsuario.setEnabled(false);
+        txtNome.setEnabled(false);
+        txtSobrenome.setEnabled(false);
+        txtSenha.setEnabled(false);
+        txtConfirmeSenha.setEnabled(false);
+    }//GEN-LAST:event_cmdSalvarActionPerformed
+
+    private void cmdDeletarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdDeletarActionPerformed
+        // TODO add your handling code here:
+        cmdInicio.setEnabled(true);
+        cmdVoltar.setEnabled(true);
+        cmdAvancar.setEnabled(true);
+        cmdFim.setEnabled(true);
+        cmdAdd.setEnabled(true);
+        cmdEditar.setEnabled(true);
+        cmdSalvar.setEnabled(false);
+        cmdBuscar.setEnabled(true);
+        cmdDeletar.setEnabled(false);
+        
+        boxPerfil.setEnabled(false);
+        txtCodUsuario.setEnabled(false);
+        txtNome.setEnabled(false);
+        txtSobrenome.setEnabled(false);
+        txtSenha.setEnabled(false);
+        txtConfirmeSenha.setEnabled(false);
+    }//GEN-LAST:event_cmdDeletarActionPerformed
+
+    private void txtNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNomeActionPerformed
+
+    private void txtSobrenomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSobrenomeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtSobrenomeActionPerformed
+
+    private void txtSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSenhaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtSenhaActionPerformed
+
+    private void txtConfirmeSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtConfirmeSenhaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtConfirmeSenhaActionPerformed
+
+    private void cmdEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdEditarActionPerformed
+        // TODO add your handling code here:
+        cmdInicio.setEnabled(false);
+        cmdVoltar.setEnabled(false);
+        cmdAvancar.setEnabled(false);
+        cmdFim.setEnabled(false);
+        cmdAdd.setEnabled(false);
+        cmdEditar.setEnabled(false);
+        cmdSalvar.setEnabled(true);
+        cmdBuscar.setEnabled(false);
+        cmdDeletar.setEnabled(true);
+        
+        boxPerfil.setEnabled(true);
+        txtNome.setEnabled(true);
+        txtSobrenome.setEnabled(true);
+        txtSenha.setEnabled(true);
+        txtConfirmeSenha.setEnabled(true);
+        
+        txtNome.requestFocusInWindow();
+        
+        cmdAdicionar = false;
+    }//GEN-LAST:event_cmdEditarActionPerformed
+
+    private void formInternalFrameOpened(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameOpened
+        // TODO add your handling code here:
+        txtCodUsuario.setText(clsdados.getUsuarios()[usuarioAtual].getIdUsuario());
+        txtNome.setText(clsdados.getUsuarios()[usuarioAtual].getNome());
+        txtSobrenome.setText(clsdados.getUsuarios()[usuarioAtual].getSobrenome());
+        txtSenha.setText(clsdados.getUsuarios()[usuarioAtual].getSenha());
+        txtConfirmeSenha.setText(clsdados.getUsuarios()[usuarioAtual].getSenha());
+        boxPerfil.setSelectedItem(clsdados.getUsuarios()[usuarioAtual].getPerfil());
+    }//GEN-LAST:event_formInternalFrameOpened
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> boxPerfil;
+    private javax.swing.JButton cmdAdd;
     private javax.swing.JButton cmdAvancar;
+    private javax.swing.JButton cmdBuscar;
+    private javax.swing.JButton cmdDeletar;
+    private javax.swing.JButton cmdEditar;
     private javax.swing.JButton cmdFim;
     private javax.swing.JButton cmdInicio;
+    private javax.swing.JButton cmdSalvar;
     private javax.swing.JButton cmdVoltar;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

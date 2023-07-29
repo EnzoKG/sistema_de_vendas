@@ -5,14 +5,18 @@
 package forms;
 
 import javax.swing.JOptionPane;
-import sistema_de_vendas.Dados;
+import classes.Dados;
 
 /**
  *
  * @author enzog
  */
 public class frmLogin extends javax.swing.JFrame {
-
+    
+    private Dados clsdados;
+    public void setDados(Dados clsDados) {
+        this.clsdados = clsDados;
+    }
     /**
      * Creates new form frmLogin
      */
@@ -127,8 +131,8 @@ public class frmLogin extends javax.swing.JFrame {
 
     private void cmdLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdLoginActionPerformed
         // TODO add your handling code here:
-        Dados dados = new Dados();
-        if(!dados.validaUsuarios(txtUsuário.getText(), new String(txtSenha.getPassword()))){
+        
+        if(!clsdados.validaUsuarios(txtUsuário.getText(), new String(txtSenha.getPassword()))){
             JOptionPane.showMessageDialog(rootPane, "USUÁRIO E/OU SENHA INCORRETA");
             txtUsuário.setText("");
             txtSenha.setText("");
@@ -136,6 +140,7 @@ public class frmLogin extends javax.swing.JFrame {
             return;
         }
         frmMenu menu = new frmMenu();
+        menu.setDados(clsdados);
         this.setVisible(false);
         menu.setVisible(true);
         menu.setExtendedState(MAXIMIZED_BOTH);

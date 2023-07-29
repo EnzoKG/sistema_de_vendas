@@ -4,12 +4,18 @@
  */
 package forms;
 
+import classes.Dados;
+
 /**
  *
  * @author enzog
  */
 public class frmMenu extends javax.swing.JFrame {
 
+    private Dados clsdados;
+    public void setDados(Dados clsDados) {
+        this.clsdados = clsDados;
+    }
     /**
      * Creates new form frmMenu
      */
@@ -148,6 +154,7 @@ public class frmMenu extends javax.swing.JFrame {
     private void mnArquivosUsuáriosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnArquivosUsuáriosActionPerformed
         // TODO add your handling code here:
         frmUsuarios fusuario = new frmUsuarios();
+        fusuario.setDados(clsdados);
         deskPanel.add(fusuario);
         fusuario.show();
     }//GEN-LAST:event_mnArquivosUsuáriosActionPerformed
