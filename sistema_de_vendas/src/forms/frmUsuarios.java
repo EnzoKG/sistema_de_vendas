@@ -7,6 +7,7 @@ package forms;
 import classes.Dados;
 import classes.Usuarios;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -17,6 +18,7 @@ public class frmUsuarios extends javax.swing.JInternalFrame {
     private Dados clsdados;
     private int usuarioAtual = 0;
     private boolean cmdAdicionar = false;
+    private DefaultTableModel userTable;
     
     public void setDados(Dados clsDados) {
         this.clsdados = clsDados;
@@ -59,6 +61,8 @@ public class frmUsuarios extends javax.swing.JInternalFrame {
         cmdBuscar = new javax.swing.JButton();
         cmdDeletar = new javax.swing.JButton();
         cmdCancelar = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        mTable = new javax.swing.JTable();
 
         setClosable(true);
         setIconifiable(true);
@@ -213,6 +217,19 @@ public class frmUsuarios extends javax.swing.JInternalFrame {
             }
         });
 
+        mTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(mTable);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -257,7 +274,8 @@ public class frmUsuarios extends javax.swing.JInternalFrame {
                         .addComponent(txtCodUsuario, javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(boxPerfil, javax.swing.GroupLayout.Alignment.LEADING, 0, 150, Short.MAX_VALUE))
                     .addComponent(txtSobrenome, javax.swing.GroupLayout.PREFERRED_SIZE, 325, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(125, Short.MAX_VALUE))
+                .addContainerGap(289, Short.MAX_VALUE))
+            .addComponent(jScrollPane1)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -306,7 +324,8 @@ public class frmUsuarios extends javax.swing.JInternalFrame {
                                         .addComponent(cmdSalvar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                     .addComponent(cmdCancelar)))))
                     .addComponent(cmdFim, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addContainerGap())
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
@@ -364,6 +383,7 @@ public class frmUsuarios extends javax.swing.JInternalFrame {
         cmdAdicionar = true;
         
         txtCodUsuario.requestFocusInWindow();
+        loadTable();
     }//GEN-LAST:event_cmdAddActionPerformed
 
     private void cmdSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdSalvarActionPerformed
@@ -451,6 +471,8 @@ public class frmUsuarios extends javax.swing.JInternalFrame {
         txtSobrenome.setEnabled(false);
         txtSenha.setEnabled(false);
         txtConfirmeSenha.setEnabled(false);
+        
+        loadTable();
     }//GEN-LAST:event_cmdSalvarActionPerformed
 
     private void cmdDeletarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdDeletarActionPerformed
@@ -463,6 +485,9 @@ public class frmUsuarios extends javax.swing.JInternalFrame {
         String msg;
         msg = clsdados.delUsuario(usuarioAtual);
         JOptionPane.showMessageDialog(rootPane, msg);
+        usuarioAtual = 0;
+        visualizarCadastros();
+        loadTable();
     }//GEN-LAST:event_cmdDeletarActionPerformed
 
     private void txtNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomeActionPerformed
@@ -507,6 +532,7 @@ public class frmUsuarios extends javax.swing.JInternalFrame {
     private void formInternalFrameOpened(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameOpened
         // TODO add your handling code here:
         visualizarCadastros();
+        loadTable();
     }//GEN-LAST:event_formInternalFrameOpened
 
     private void cmdFimActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdFimActionPerformed
@@ -552,7 +578,21 @@ public class frmUsuarios extends javax.swing.JInternalFrame {
         txtConfirmeSenha.setText(clsdados.getUsuarios()[usuarioAtual].getSenha());
         boxPerfil.setSelectedItem(clsdados.getUsuarios()[usuarioAtual].getPerfil());
     }
-
+    
+    private void loadTable() {
+        String tituloCabecalho[] = {"Código do Usuário", "Nome", "Sobrenome", "Perfil"};
+        String regCadastro[] = new String[4];
+        userTable = new DefaultTableModel(null, tituloCabecalho);
+        for(int i = 0; i < clsdados.qtdUsers(); i++) {
+            regCadastro[0] = clsdados.getUsuarios()[i].getIdUsuario();
+            regCadastro[1] = clsdados.getUsuarios()[i].getNome();
+            regCadastro[2] = clsdados.getUsuarios()[i].getSobrenome();
+            regCadastro[3] = clsdados.getUsuarios()[i].getPerfil();
+            userTable.addRow(regCadastro);
+        }
+        mTable.setModel(userTable);
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> boxPerfil;
     private javax.swing.JButton cmdAdd;
@@ -571,6 +611,8 @@ public class frmUsuarios extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable mTable;
     private javax.swing.JTextField txtCodUsuario;
     private javax.swing.JPasswordField txtConfirmeSenha;
     private javax.swing.JTextField txtNome;

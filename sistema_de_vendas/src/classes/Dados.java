@@ -13,7 +13,7 @@ public class Dados {
     private int idUsuario = 0;
     
     public Dados() {
-        Usuarios usuario = new Usuarios("admin", "Enzo", "Kozoroski Giovanini", "123", "1");
+        Usuarios usuario = new Usuarios("admin", "Enzo", "Kozoroski Giovanini", "123", "Administrador");
         user[idUsuario] = usuario;
         idUsuario++;
     }
