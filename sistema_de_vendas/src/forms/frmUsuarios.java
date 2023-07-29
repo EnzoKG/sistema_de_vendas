@@ -58,6 +58,7 @@ public class frmUsuarios extends javax.swing.JInternalFrame {
         cmdSalvar = new javax.swing.JButton();
         cmdBuscar = new javax.swing.JButton();
         cmdDeletar = new javax.swing.JButton();
+        cmdCancelar = new javax.swing.JButton();
 
         setClosable(true);
         setIconifiable(true);
@@ -197,10 +198,18 @@ public class frmUsuarios extends javax.swing.JInternalFrame {
 
         cmdDeletar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/delete.png"))); // NOI18N
         cmdDeletar.setToolTipText("Deletar Cadastro");
-        cmdDeletar.setEnabled(false);
         cmdDeletar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmdDeletarActionPerformed(evt);
+            }
+        });
+
+        cmdCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/cancel.png"))); // NOI18N
+        cmdCancelar.setToolTipText("Cancelar");
+        cmdCancelar.setEnabled(false);
+        cmdCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmdCancelarActionPerformed(evt);
             }
         });
 
@@ -217,18 +226,18 @@ public class frmUsuarios extends javax.swing.JInternalFrame {
                         .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(cmdInicio)
+                        .addComponent(cmdInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cmdVoltar)
+                        .addComponent(cmdVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cmdAvancar))
-                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(cmdAvancar, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(cmdFim)
+                        .addComponent(cmdFim, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(cmdAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -236,9 +245,11 @@ public class frmUsuarios extends javax.swing.JInternalFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(cmdSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cmdDeletar, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(cmdCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cmdBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(cmdBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(cmdDeletar, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addComponent(txtConfirmeSenha, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
                         .addComponent(txtSenha, javax.swing.GroupLayout.Alignment.LEADING))
@@ -280,10 +291,10 @@ public class frmUsuarios extends javax.swing.JInternalFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(cmdInicio, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(cmdVoltar, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(cmdAvancar, javax.swing.GroupLayout.Alignment.TRAILING)))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(cmdInicio, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(cmdVoltar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(cmdAvancar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(12, 12, 12)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -292,7 +303,8 @@ public class frmUsuarios extends javax.swing.JInternalFrame {
                                         .addComponent(cmdDeletar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addComponent(cmdAdd, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addComponent(cmdEditar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(cmdSalvar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
+                                        .addComponent(cmdSalvar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addComponent(cmdCancelar)))))
                     .addComponent(cmdFim, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addContainerGap())
         );
@@ -398,14 +410,28 @@ public class frmUsuarios extends javax.swing.JInternalFrame {
         }
         
         int posLinha = clsdados.linhaUsuario(txtCodUsuario.getText());
-        if(posLinha != -1) {
-            JOptionPane.showMessageDialog(rootPane, "Esse CADASTRO de usuário já existe!");
-            txtCodUsuario.requestFocusInWindow();
-            return;
+        if(cmdAdicionar) {
+            if(posLinha != -1) {
+                JOptionPane.showMessageDialog(rootPane, "Esse CADASTRO de usuário já existe!");
+                txtCodUsuario.requestFocusInWindow();
+                return;
+            }
+        } else {
+            if(posLinha == -1) {
+                txtCodUsuario.requestFocusInWindow();
+                return;
+            }
         }
         
         Usuarios user = new Usuarios(txtCodUsuario.getText(), txtNome.getText(), txtSobrenome.getText(), new String(txtSenha.getPassword()), (String)boxPerfil.getSelectedItem());
-        String msg = clsdados.cadUsuario(user);
+        String msg;
+        
+        if(cmdAdicionar) {
+            msg = clsdados.cadUsuario(user);
+        } else {
+            msg = clsdados.editUsuario(user, posLinha);
+        }
+        
         JOptionPane.showMessageDialog(rootPane, msg);
         
         // TODO add your handling code here:
@@ -417,7 +443,7 @@ public class frmUsuarios extends javax.swing.JInternalFrame {
         cmdEditar.setEnabled(true);
         cmdSalvar.setEnabled(false);
         cmdBuscar.setEnabled(true);
-        cmdDeletar.setEnabled(false);
+        cmdCancelar.setEnabled(false);
         
         boxPerfil.setEnabled(false);
         txtCodUsuario.setEnabled(false);
@@ -429,22 +455,14 @@ public class frmUsuarios extends javax.swing.JInternalFrame {
 
     private void cmdDeletarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdDeletarActionPerformed
         // TODO add your handling code here:
-        cmdInicio.setEnabled(true);
-        cmdVoltar.setEnabled(true);
-        cmdAvancar.setEnabled(true);
-        cmdFim.setEnabled(true);
-        cmdAdd.setEnabled(true);
-        cmdEditar.setEnabled(true);
-        cmdSalvar.setEnabled(false);
-        cmdBuscar.setEnabled(true);
-        cmdDeletar.setEnabled(false);
+        int del = JOptionPane.showConfirmDialog(rootPane, "Deseja realmente DELETAR esse cadastro?");
+        if(del != 0) {
+            return;
+        }
         
-        boxPerfil.setEnabled(false);
-        txtCodUsuario.setEnabled(false);
-        txtNome.setEnabled(false);
-        txtSobrenome.setEnabled(false);
-        txtSenha.setEnabled(false);
-        txtConfirmeSenha.setEnabled(false);
+        String msg;
+        msg = clsdados.delUsuario(usuarioAtual);
+        JOptionPane.showMessageDialog(rootPane, msg);
     }//GEN-LAST:event_cmdDeletarActionPerformed
 
     private void txtNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomeActionPerformed
@@ -505,6 +523,26 @@ public class frmUsuarios extends javax.swing.JInternalFrame {
         }
         visualizarCadastros();
     }//GEN-LAST:event_cmdAvancarActionPerformed
+
+    private void cmdCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdCancelarActionPerformed
+        // TODO add your handling code here:
+        cmdInicio.setEnabled(true);
+        cmdVoltar.setEnabled(true);
+        cmdAvancar.setEnabled(true);
+        cmdFim.setEnabled(true);
+        cmdAdd.setEnabled(true);
+        cmdEditar.setEnabled(true);
+        cmdSalvar.setEnabled(false);
+        cmdBuscar.setEnabled(true);
+        cmdDeletar.setEnabled(false);
+        
+        boxPerfil.setEnabled(false);
+        txtCodUsuario.setEnabled(false);
+        txtNome.setEnabled(false);
+        txtSobrenome.setEnabled(false);
+        txtSenha.setEnabled(false);
+        txtConfirmeSenha.setEnabled(false);
+    }//GEN-LAST:event_cmdCancelarActionPerformed
     
     private void visualizarCadastros() {
         txtCodUsuario.setText(clsdados.getUsuarios()[usuarioAtual].getIdUsuario());
@@ -520,6 +558,7 @@ public class frmUsuarios extends javax.swing.JInternalFrame {
     private javax.swing.JButton cmdAdd;
     private javax.swing.JButton cmdAvancar;
     private javax.swing.JButton cmdBuscar;
+    private javax.swing.JButton cmdCancelar;
     private javax.swing.JButton cmdDeletar;
     private javax.swing.JButton cmdEditar;
     private javax.swing.JButton cmdFim;

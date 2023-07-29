@@ -51,6 +51,22 @@ public class Dados {
         }
         this.user[idUsuario] = user;
         idUsuario++;
-        return "Cadastro realizado com sucesso!";
+        return "Cadastro REALIZADO com sucesso!";
+    }
+
+    public String editUsuario(Usuarios user, int posLinha) {
+        this.user[posLinha].setNome(user.getNome());
+        this.user[posLinha].setSobrenome(user.getSobrenome());
+        this.user[posLinha].setSenha(user.getSenha());
+        this.user[posLinha].setPerfil(user.getPerfil());
+        return "Cadastro EDITADO com sucesso!";
+    }
+    
+    public String delUsuario(int posLinha) {
+        for(int i = posLinha; i < idUsuario; i++) {
+            this.user[i] = user[i + 1];
+        }
+        idUsuario--;
+        return "Cadastro DELETADO com sucesso!";
     }
 }
