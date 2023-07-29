@@ -5,6 +5,7 @@
 package forms;
 
 import classes.Dados;
+import classes.Usuarios;
 import javax.swing.JOptionPane;
 
 /**
@@ -152,9 +153,19 @@ public class frmUsuarios extends javax.swing.JInternalFrame {
 
         cmdAvancar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/next.png"))); // NOI18N
         cmdAvancar.setToolTipText("Próximo Cadastro");
+        cmdAvancar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmdAvancarActionPerformed(evt);
+            }
+        });
 
         cmdFim.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/right.png"))); // NOI18N
         cmdFim.setToolTipText("Último Cadastro");
+        cmdFim.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmdFimActionPerformed(evt);
+            }
+        });
 
         cmdAdd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/add.png"))); // NOI18N
         cmdAdd.setToolTipText("Novo Cadastro");
@@ -299,10 +310,17 @@ public class frmUsuarios extends javax.swing.JInternalFrame {
 
     private void cmdVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdVoltarActionPerformed
         // TODO add your handling code here:
+        usuarioAtual--;
+        if(usuarioAtual == -1) {
+            usuarioAtual = clsdados.qtdUsers() - 1;
+        }
+        visualizarCadastros();
     }//GEN-LAST:event_cmdVoltarActionPerformed
 
     private void cmdInicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdInicioActionPerformed
         // TODO add your handling code here:
+        usuarioAtual = 0;
+        visualizarCadastros();
     }//GEN-LAST:event_cmdInicioActionPerformed
 
     private void cmdAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdAddActionPerformed
@@ -386,6 +404,10 @@ public class frmUsuarios extends javax.swing.JInternalFrame {
             return;
         }
         
+        Usuarios user = new Usuarios(txtCodUsuario.getText(), txtNome.getText(), txtSobrenome.getText(), new String(txtSenha.getPassword()), (String)boxPerfil.getSelectedItem());
+        String msg = clsdados.cadUsuario(user);
+        JOptionPane.showMessageDialog(rootPane, msg);
+        
         // TODO add your handling code here:
         cmdInicio.setEnabled(true);
         cmdVoltar.setEnabled(true);
@@ -466,14 +488,32 @@ public class frmUsuarios extends javax.swing.JInternalFrame {
 
     private void formInternalFrameOpened(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameOpened
         // TODO add your handling code here:
+        visualizarCadastros();
+    }//GEN-LAST:event_formInternalFrameOpened
+
+    private void cmdFimActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdFimActionPerformed
+        // TODO add your handling code here:
+        usuarioAtual = clsdados.qtdUsers() - 1;
+        visualizarCadastros();
+    }//GEN-LAST:event_cmdFimActionPerformed
+
+    private void cmdAvancarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdAvancarActionPerformed
+        // TODO add your handling code here:
+        usuarioAtual++;
+        if(usuarioAtual == clsdados.qtdUsers()) {
+            usuarioAtual = 0;
+        }
+        visualizarCadastros();
+    }//GEN-LAST:event_cmdAvancarActionPerformed
+    
+    private void visualizarCadastros() {
         txtCodUsuario.setText(clsdados.getUsuarios()[usuarioAtual].getIdUsuario());
         txtNome.setText(clsdados.getUsuarios()[usuarioAtual].getNome());
         txtSobrenome.setText(clsdados.getUsuarios()[usuarioAtual].getSobrenome());
         txtSenha.setText(clsdados.getUsuarios()[usuarioAtual].getSenha());
         txtConfirmeSenha.setText(clsdados.getUsuarios()[usuarioAtual].getSenha());
         boxPerfil.setSelectedItem(clsdados.getUsuarios()[usuarioAtual].getPerfil());
-    }//GEN-LAST:event_formInternalFrameOpened
-
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> boxPerfil;

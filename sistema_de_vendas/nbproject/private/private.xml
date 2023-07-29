@@ -5,7 +5,10 @@
         <group>
             <file>file:/C:/Users/enzog/projetos/sistema_de_vendas/sistema_de_vendas/src/forms/frmMenu.java</file>
             <file>file:/C:/Users/enzog/projetos/sistema_de_vendas/sistema_de_vendas/src/forms/frmUsuarios.java</file>
-            <file>file:/C:/Users/enzog/projetos/sistema_de_vendas/sistema_de_vendas/src/sistema_de_vendas/main.java</file>
+            <file>file:/C:/Users/enzog/projetos/sistema_de_vendas/sistema_de_vendas/src/classes/Dados.java</file>
+            <file>file:/C:/Users/enzog/projetos/sistema_de_vendas/sistema_de_vendas/src/classes/Usuarios.java</file>
+            <file>file:/C:/Users/enzog/projetos/sistema_de_vendas/sistema_de_vendas/src/forms/frmLogin.java</file>
+            <file>file:/C:/Users/enzog/projetos/sistema_de_vendas/sistema_de_vendas/src/classes/Main.java</file>
         </group>
     </open-files>
 </project-private>

@@ -259,6 +259,9 @@
         </Property>
         <Property name="toolTipText" type="java.lang.String" value="Pr&#xf3;ximo Cadastro"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cmdAvancarActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="cmdFim">
       <Properties>
@@ -267,6 +270,9 @@
         </Property>
         <Property name="toolTipText" type="java.lang.String" value="&#xda;ltimo Cadastro"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cmdFimActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="cmdAdd">
       <Properties>

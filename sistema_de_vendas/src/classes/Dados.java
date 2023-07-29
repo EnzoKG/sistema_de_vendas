@@ -18,6 +18,10 @@ public class Dados {
         idUsuario++;
     }
     
+    public int qtdUsers() {
+        return idUsuario;
+    }
+    
     public Usuarios[] getUsuarios() {
         return user;
     }
